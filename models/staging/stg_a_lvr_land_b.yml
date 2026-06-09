@@ -1,0 +1,149 @@
+version: 2
+
+models:
+  - name: stg_a_lvr_land_b
+    description: ""
+    columns:
+      - name: 鄉鎮市區
+        data_type: text
+        description: ""
+
+      - name: 交易標的
+        data_type: text
+        description: ""
+
+      - name: 土地位置建物門牌
+        data_type: text
+        description: ""
+
+      - name: 土地移轉總面積平方公尺
+        data_type: double precision
+        description: ""
+
+      - name: 都市土地使用分區
+        data_type: text
+        description: ""
+
+      - name: 非都市土地使用分區
+        data_type: integer
+        description: ""
+
+      - name: 非都市土地使用編定
+        data_type: integer
+        description: ""
+
+      - name: 交易年月日
+        data_type: integer
+        description: ""
+
+      - name: 交易筆棟數
+        data_type: text
+        description: ""
+
+      - name: 移轉層次
+        data_type: text
+        description: ""
+
+      - name: 總樓層數
+        data_type: integer
+        description: ""
+
+      - name: 建物型態
+        data_type: text
+        description: ""
+
+      - name: 主要用途
+        data_type: text
+        description: ""
+
+      - name: 主要建材
+        data_type: text
+        description: ""
+
+      - name: 建築完成年月
+        data_type: integer
+        description: ""
+
+      - name: 建物移轉總面積平方公尺
+        data_type: double precision
+        description: ""
+
+      - name: 建物現況格局-房
+        data_type: integer
+        description: ""
+
+      - name: 建物現況格局-廳
+        data_type: integer
+        description: ""
+
+      - name: 建物現況格局-衛
+        data_type: integer
+        description: ""
+
+      - name: 建物現況格局-隔間
+        data_type: text
+        description: ""
+
+      - name: 有無管理組織
+        data_type: text
+        description: ""
+
+      - name: 總價元
+        data_type: integer
+        description: ""
+
+      - name: 單價元平方公尺
+        data_type: integer
+        description: ""
+
+      - name: 車位類別
+        data_type: text
+        description: ""
+
+      - name: 車位移轉總面積平方公尺
+        data_type: double precision
+        description: ""
+
+      - name: 車位總價元
+        data_type: integer
+        description: ""
+
+      - name: 備註
+        data_type: text
+        description: ""
+
+      - name: 編號
+        data_type: text
+        description: ""
+
+      - name: 建案名稱
+        data_type: text
+        description: ""
+
+      - name: 棟及號
+        data_type: text
+        description: ""
+
+      - name: 解約情形
+        data_type: integer
+        description: ""
+
+      - name: 建築完成西元年月日
+        data_type: character varying
+        description: ""
+
+      - name: 交易西元年月日
+        data_type: character varying
+        description: ""
+
+      - name: 土地移轉總總坪數
+        data_type: numeric
+        description: ""
+
+      - name: 建物移轉總坪數
+        data_type: numeric
+        description: ""
+
+      - name: 車位移轉總坪數
+        data_type: numeric
+        description: ""

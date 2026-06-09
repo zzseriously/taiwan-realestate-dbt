@@ -1,0 +1,23 @@
+# 忽略包含密碼的設定檔
+.env
+
+# 忽略虛擬環境
+venv/
+.venv/
+
+# 忽略你的原始大 CSV 檔案（GitHub 單一檔案限制 100MB，通常大資料不推上 GitHub）
+*.csv
+
+# 忽略下載的資料夾
+downloads*
+
+# dbt core
+profiles.yml
+
+# Jupyter Notebook
+*.ipynb
+
+target/
+dbt_packages/
+logs/
+jaffle_shop/

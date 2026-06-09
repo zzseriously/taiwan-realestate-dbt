@@ -1,0 +1,24 @@
+name: taiwan_realestate_dbt
+
+profile: taiwan_realestate_dbt
+
+seed-paths: ["seeds"]
+model-paths: ["models"]
+macro-paths: ["macros"]
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+seeds:
+  # Builds seeds into '<your_schema_name>_raw'
+  taiwan_realestate_dbt:
+    +schema: raw
+
+models:
+  taiwan_realestate_dbt:
+    +static_analysis: strict
+    # Materialize staging models as views, and marts as tables
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table

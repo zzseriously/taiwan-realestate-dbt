@@ -1,0 +1,7 @@
+version: 2
+
+sources:
+  - name: taiwan_realestate_raw
+    tables:
+      - name: a_lvr_land_a
+      - name: a_lvr_land_b
