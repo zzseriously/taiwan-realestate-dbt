@@ -1,5 +1,5 @@
 # 台灣房價dbt
-用台灣房價做一點資料工程(用dbt)，順便分析一下
+用台灣房價做一點資料工程(用DBT)，順便用streamlit看一下視覺化長怎樣
 
 ## 資料來源
 內政部實價登錄
@@ -47,19 +47,31 @@ DBT的概念是用sql跟yaml設定格式，然後按照DBT的框架，就能生�
 ├── dbt_project.yml &ensp; ←專案設定\
 ├── models &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp; ←把轉換資料表的sql以及跟資料表有關的yaml放在這\
 ├── seeds &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp; ←把要匯進資料庫的csv放在這\
+├── tests &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp; ←單一測試的sql\
 ├── tests\
-├── analyses\
 └── docs
 
 ### DBT步驟
 ---
-step1:seed準備好資料後，在終端機`dbt seed`然後DBT就自動把csv匯進資料庫\
-step2:models裡面分兩層，staging裡的sql，寫完之後就`dbt run --select stg_你的腳本名`，然後你就可以寫引用**這個sql腳本產生的結果**的sql\
-eg.stg_a_lvr_land_a.sql把平方公尺換成坪數然後dbt run，dbt根據我在dbt_project.yml裡的設定，生成了一個view
+step1:seeds準備好資料後，在終端機`dbt seed`然後DBT就自動把csv匯進資料庫。\
+step2:models裡面分兩層，staging裡的sql寫完之後，就`dbt run --select 某一個model裡的sql名`，DBT就去執行這隻腳本並且在資料庫產生表或檢視，然後你就可以寫引用**這個sql腳本產生的結果**的sql。也可以`dbt run`就會一次跑完所有sql。\
+eg.stg_a_lvr_land_a.sql把平方公尺換成坪數然後dbt run，dbt根據我在dbt_project.yml裡的設定，生成了一個view。
 >models\
 >├── staging &ensp;&ensp; ←原始資料表的簡單轉換(資料型態、重新命名欄位)，通常一張表一個sql，檔名通常前綴stg_\
 >└── marts &ensp;&ensp;&ensp;&ensp;←有使用join或是匯總成一張欄位很多的表的sql，檔名通常前綴dim_
 
-這裡有一個小訣竅，安裝一個名叫codegen的套件之後，在終端機輸入語法就可以幫你gen出source的yaml☞
+staging跟marts資料夾還會放入yaml檔，用來交代sql產生的表或檢視的欄位，以及step3的通用測試\
+這裡有一個小訣竅，安裝一個名叫codegen的套件之後，在終端機輸入語法就可以幫你gen出source(step1的seeds裡的csv)的yaml☞
 [傳送門](https://hub.getdbt.com/dbt-labs/codegen/latest/)，gen完source的yaml後，還可以點進yaml裡gen出model的sql\
-step3:
+step3:測試\
+分成通用測試跟單一測試\
+測試資料內容或邏輯的正確性測試， 通用測試寫在各自的yaml裡面；單一測試是針對特定邏輯的測試，寫在test資料夾裡面。\
+`dbt test`執行所有測試\
+`dbt source --select "source:*"`檢查資料源\
+`dbt test --select test_type:generic`執行通用測試\
+`dbt test --select test_type:singular`執行單一測試\
+`dbt test --select 某一個model裡的sql名`只對那隻sql腳本的資料跟邏輯測試\
+通用測試可以測試欄位是否為一(unique)、是否有空值(not null)、欄位值是否符合特定內容(accepted_values)、欄位值是否在其他表中的某欄(relationships)。\
+到step3流程就大致完成了。\
+(step4)最後可以使用`dbt build`，這個命令會一次執行`dbt seed`、`dbt run`、`dbt snapshot`、`dbt test`\
+如果上游處理失敗，下游就會自動略過，當然也有選擇單一腳本的命令：`dbt build --select 某一個model裡的sql名`

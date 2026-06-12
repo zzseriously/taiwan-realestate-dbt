@@ -2,13 +2,17 @@ version: 2
 
 models:
   - name: stg_a_lvr_land_a
-    description: ""
+    description: "不動產交易資料"
     columns:
       - name: 鄉鎮市區
+        data_tests:
+          - not_null
         data_type: text
         description: ""
 
       - name: 交易標的
+        data_tests:
+          - not_null
         data_type: text
         description: ""
 
@@ -34,6 +38,8 @@ models:
 
       - name: 交易年月日
         data_type: integer
+        data_test:
+          - not_null
         description: ""
 
       - name: 交易筆棟數
@@ -114,7 +120,10 @@ models:
 
       - name: 編號
         data_type: text
-        description: ""
+        data_tests:
+          - not_null
+          - unique
+        description: "primary key"
 
       - name: 主建物面積
         data_type: double precision
@@ -141,6 +150,8 @@ models:
         description: ""
 
       - name: 交易西元年月日
+        data_test:
+          - not_null
         data_type: character varying
         description: ""
 

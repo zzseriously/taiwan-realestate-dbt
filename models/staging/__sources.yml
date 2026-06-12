@@ -4,4 +4,115 @@ sources:
   - name: taiwan_realestate_raw
     tables:
       - name: a_lvr_land_a
+        description: "不動產交易資料"
+        columns:
+          - name: 鄉鎮市區
+            data_tests:
+              - not_null
+            data_type: text
+            description: ""
+
+          - name: 交易標的
+            data_tests:
+              - not_null
+            data_type: text
+            description: ""
+
+          - name: 土地位置建物門牌
+            data_type: text
+            description: ""
+
+          - name: 土地移轉總面積平方公尺
+            data_type: double precision
+            description: ""
+
+          - name: 都市土地使用分區
+            data_type: text
+            description: ""
+
+          - name: 非都市土地使用分區
+            data_type: integer
+            description: ""
+
+          - name: 非都市土地使用編定
+            data_type: integer
+            description: ""
+
+          - name: 交易年月日
+            data_type: integer
+            data_test:
+              - not_null
+            description: ""
+
+          - name: 交易筆棟數
+            data_type: text
+            description: ""
+
+          - name: 移轉層次
+            data_type: text
+            description: ""
+
+          - name: 總樓層數
+            data_type: text
+            description: ""
+
+          - name: 建物型態
+            data_type: text
+            description: ""
+            
       - name: a_lvr_land_b
+        description: "預售屋交易資料"
+        columns:
+          - name: 鄉鎮市區
+            data_tests:
+              - not_null
+            data_type: text
+            description: ""
+
+          - name: 交易標的
+            data_tests:
+              - not_null
+            data_type: text
+            description: ""
+
+          - name: 土地位置建物門牌
+            data_type: text
+            description: ""
+
+          - name: 土地移轉總面積平方公尺
+            data_type: double precision
+            description: ""
+
+          - name: 都市土地使用分區
+            data_type: text
+            description: ""
+
+          - name: 非都市土地使用分區
+            data_type: integer
+            description: ""
+
+          - name: 非都市土地使用編定
+            data_type: integer
+            description: ""
+
+          - name: 交易年月日
+            data_type: integer
+            data_test:
+              - not_null
+            description: ""
+
+          - name: 交易筆棟數
+            data_type: text
+            description: ""
+
+          - name: 移轉層次
+            data_type: text
+            description: ""
+
+          - name: 總樓層數
+            data_type: text
+            description: ""
+
+          - name: 建物型態
+            data_type: text
+            description: ""
