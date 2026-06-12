@@ -48,7 +48,6 @@ DBT的概念是用sql跟yaml設定格式，然後按照DBT的框架，就能生�
 ├── models &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp; ←把轉換資料表的sql以及跟資料表有關的yaml放在這\
 ├── seeds &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp; ←把要匯進資料庫的csv放在這\
 ├── tests &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp; ←單一測試的sql\
-├── tests\
 └── docs
 
 ### DBT步驟
