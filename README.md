@@ -1,6 +1,6 @@
 # 台灣房價dbt
 用台灣房價做一點資料工程(用DBT)，順便用streamlit看一下視覺化長怎樣
-
+![截圖](chart1.png)
 ## 資料來源
 內政部實價登錄
 網址：https://plvr.land.moi.gov.tw/DownloadOpenData \
