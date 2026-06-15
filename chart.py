@@ -29,14 +29,18 @@ chart1=df_result[df_result['備註'].isnull()].groupby(df_result['交易西元�
 不含車位平均每坪單價=('不含車位每坪單價', 'mean'),
 交易件數=('編號', 'count')
 ).reset_index()
-chart1['不含車位平均每坪單價'] = chart1['不含車位平均每坪單價'].apply(format_chinese_unit)
+chart1['不含車位平均每坪單價(萬)']=chart1['不含車位平均每坪單價']/10_000
 
 st.title("數據分析儀表板")
 st.write("以下為台北市近八個月的交易數據(不含特殊備註)：")
 col1, col2 = st.columns(2)
 with col1:
     st.subheader("各月平均每坪單價")
-    st.line_chart(chart1.sort_values(by='交易西元年月日', ascending=False), x='交易西元年月日', y='不含車位平均每坪單價',height=300,use_container_width=True)
+    sorted_df = chart1.sort_values(by="交易西元年月日", ascending=False)
+    st.line_chart(sorted_df, x='交易西元年月日', y='不含車位平均每坪單價(萬)',height=300)
+
 with col2:
     st.subheader("各月交易件數")
-    st.bar_chart(chart1.sort_values(by='交易西元年月日', ascending=False), x='交易西元年月日', y='交易件數',height=300,use_container_width=True)
+    st.bar_chart(chart1.sort_values(by=['交易西元年月日','交易件數'], ascending=False), x='交易西元年月日', y='交易件數',height=300,use_container_width=True)
+
+st.dataframe(chart1.sort_values(by=['交易西元年月日','不含車位平均每坪單價'], ascending=False).reset_index(drop=True))
